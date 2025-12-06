@@ -1,6 +1,6 @@
 
 
-# Sketchy Gallery - Run and deploy your AI Studio app
+# Sketchy Gallery 
 
 This contains everything you need to run your app locally.
 
@@ -13,7 +13,7 @@ An exclusive digital art gallery featuring the works of Benard Mugambi.
 
 1. Install dependencies:
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+2. Set the `API_KEY` in [.env.local](.env.local) to your API key
 3. Run the app:
    `npm run dev`
 # Art-de-gallery
