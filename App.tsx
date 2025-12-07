@@ -7,13 +7,14 @@ import { Contact } from './components/Contact';
 import { ArtworkModal } from './components/ArtworkModal';
 import { AdminLogin } from './components/AdminLogin';
 import { AdminDashboard } from './components/AdminDashboard';
-import { storageService } from './services/storageService';
+import { apiService } from './services/apiService';
 import { Artwork } from './types';
 
 function App() {
-  // Lifted state for artworks to allow updates - load from storage
-  const [artworks, setArtworks] = useState<Artwork[]>(() => storageService.loadArtworks());
+  // Load artworks from backend API
+  const [artworks, setArtworks] = useState<Artwork[]>([]);
   const [selectedArtwork, setSelectedArtwork] = useState<Artwork | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   
   // Admin State
   const [isAdminOpen, setIsAdminOpen] = useState(false);
@@ -30,24 +31,41 @@ function App() {
     setIsAuthenticated(true);
   };
 
-  // Save artworks to localStorage whenever they change
+  // Load artworks from backend on mount
   useEffect(() => {
-    storageService.saveArtworks(artworks);
-  }, [artworks]);
+    loadArtworks();
+  }, []);
 
-  const handleSaveArtwork = (updatedArtwork: Artwork) => {
-    setArtworks(prev => {
-      const exists = prev.find(a => a.id === updatedArtwork.id);
-      if (exists) {
-        return prev.map(a => a.id === updatedArtwork.id ? updatedArtwork : a);
-      } else {
-        return [updatedArtwork, ...prev];
-      }
-    });
+  const loadArtworks = async () => {
+    setIsLoading(true);
+    const data = await apiService.getArtworks();
+    setArtworks(data);
+    setIsLoading(false);
   };
 
-  const handleDeleteArtwork = (id: string) => {
-    setArtworks(prev => prev.filter(a => a.id !== id));
+  const handleSaveArtwork = async (updatedArtwork: Artwork) => {
+    const exists = artworks.find(a => a.id === updatedArtwork.id);
+    
+    if (exists) {
+      // Update existing artwork
+      const result = await apiService.updateArtwork(updatedArtwork.id, updatedArtwork);
+      if (result) {
+        setArtworks(prev => prev.map(a => a.id === updatedArtwork.id ? result : a));
+      }
+    } else {
+      // Create new artwork
+      const result = await apiService.createArtwork(updatedArtwork);
+      if (result) {
+        setArtworks(prev => [result, ...prev]);
+      }
+    }
+  };
+
+  const handleDeleteArtwork = async (id: string) => {
+    const success = await apiService.deleteArtwork(id);
+    if (success) {
+      setArtworks(prev => prev.filter(a => a.id !== id));
+    }
   };
 
   return (
@@ -56,10 +74,19 @@ function App() {
       
       <main>
         <Hero onExplore={() => handleNavigate('gallery')} />
-        <Gallery 
-          artworks={artworks} 
-          onArtworkSelect={setSelectedArtwork} 
-        />
+        {isLoading ? (
+          <div className="min-h-screen flex items-center justify-center">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gallery-gold mx-auto mb-4"></div>
+              <p className="text-gallery-100/60">Loading gallery...</p>
+            </div>
+          </div>
+        ) : (
+          <Gallery 
+            artworks={artworks} 
+            onArtworkSelect={setSelectedArtwork} 
+          />
+        )}
         <About />
         <Contact onAdminClick={() => setIsAdminOpen(true)} />
       </main>
