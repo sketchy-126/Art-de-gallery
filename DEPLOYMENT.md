@@ -31,6 +31,18 @@
 
 ## Backend Solution (For Advanced Features)
 
+### ✨ NEW: Base64 Image Storage
+
+**The backend now stores images as base64 strings in `artworks.json`!**
+
+✅ **Benefits:**
+- Images persist after deployment (no file storage needed)
+- Works on any hosting platform
+- Simple setup - no cloud storage configuration
+- Everything in one JSON file
+
+⚠️ **Best for:** Small to medium galleries (under 50 artworks)
+
 ### Setup Backend Server
 
 1. **Install Backend Dependencies:**
@@ -48,6 +60,12 @@
 3. **Update Frontend to Use Backend:**
    - Uncomment API calls in App.tsx
    - Set VITE_API_URL in .env.local
+
+**How it works:**
+- Upload image in Admin Dashboard → Converts to base64
+- Server stores base64 in `artworks.json`
+- Images display directly from base64 data
+- No uploads folder needed!
 
 ### Deploy Backend
 

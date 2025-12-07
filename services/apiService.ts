@@ -27,21 +27,29 @@ export const apiService = {
     }
   },
 
-  // Upload image
+  // Upload image (converts to base64)
   async uploadImage(file: File): Promise<string | null> {
     try {
-      const formData = new FormData();
-      formData.append('image', file);
+      // Convert file to base64
+      const base64 = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result as string);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
 
       const response = await fetch(`${API_URL}/upload`, {
         method: 'POST',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ image: base64 }),
       });
 
       if (!response.ok) throw new Error('Failed to upload image');
       
       const data = await response.json();
-      return `${API_URL.replace('/api', '')}${data.imageUrl}`;
+      return data.imageUrl;
     } catch (error) {
       console.error('Error uploading image:', error);
       return null;
