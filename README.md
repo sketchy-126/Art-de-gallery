@@ -1,19 +1,118 @@
+# Exo-Arts Gallery
 
+A modern art gallery web application with backend API and admin dashboard.
 
-# Sketchy Gallery 
+## Project Structure
 
-This contains everything you need to run your app locally.
+```
+exo-arts-gallery/
+├── backend/          # Node.js + Express API server
+├── frontend/         # React + Vite application
+└── docs/            # Documentation files
+```
 
-An exclusive digital art gallery featuring the works of Benard Mugambi.
+## Quick Start
 
-## Run Locally
+### Prerequisites
+- Node.js 18+ installed
+- npm or yarn
 
-**Prerequisites:**  Node.js
+### 1. Install Dependencies
 
+**Backend:**
+```bash
+cd backend
+npm install
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `API_KEY` in [.env.local](.env.local) to your API key
-3. Run the app:
-   `npm run dev`
-# Art-de-gallery
+**Frontend:**
+```bash
+cd frontend
+npm install
+```
+
+### 2. Configure Environment Variables
+
+**Backend (.env):**
+```bash
+cd backend
+cp .env.example .env
+# Edit .env with your MongoDB connection string
+```
+
+**Frontend (.env.local):**
+```bash
+cd frontend
+cp .env.example .env.local
+# Edit .env.local with your API URL
+```
+
+### 3. Run Development Servers
+
+**Terminal 1 - Backend:**
+```bash
+cd backend
+npm start
+# Server runs on http://localhost:5000
+```
+
+**Terminal 2 - Frontend:**
+```bash
+cd frontend
+npm run dev
+# App runs on http://localhost:3000
+```
+
+### 4. Access the Application
+
+- **Frontend:** http://localhost:3000
+- **Backend API:** http://localhost:5000/api
+- **Admin Dashboard:** Click "Admin" in footer, login to manage artworks
+
+## Features
+
+- 🎨 Beautiful art gallery with filtering
+- 🔐 Admin dashboard for artwork management
+- 📱 Responsive design
+- 🖼️ Base64 image storage (deployment-ready)
+- 🔄 Multi-device sync via backend API
+- 🤖 AI Art Advisor (optional)
+
+## Deployment
+
+See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed deployment instructions.
+
+### Quick Deploy
+
+**Backend:** Railway, Render, or Heroku
+**Frontend:** Vercel or Netlify
+
+## Tech Stack
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB (recommended) or JSON file storage
+- CORS enabled
+
+### Frontend
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS
+- Lucide Icons
+
+## Documentation
+
+- [Deployment Guide](docs/DEPLOYMENT.md)
+- [Backend Sync Guide](docs/BACKEND_SYNC_GUIDE.md)
+- [Base64 Storage Guide](docs/BASE64_STORAGE_GUIDE.md)
+- [Troubleshooting](docs/DEPLOYMENT_TROUBLESHOOTING.md)
+
+## License
+
+MIT
+
+## Author
+
+Benard Mugambi

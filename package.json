@@ -1,23 +1,30 @@
 {
-  "name": "sketchy-gallery",
+  "name": "exo-arts-gallery",
+  "version": "1.0.0",
+  "description": "Modern art gallery with backend API and admin dashboard",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm start",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build:frontend": "cd frontend && npm run build",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && npm run preview"
   },
-  "dependencies": {
-    "react-dom": "^19.2.0",
-    "lucide-react": "^0.555.0",
-    "react": "^19.2.0",
-    "@google/genai": "^1.30.0"
-  },
+  "keywords": [
+    "art-gallery",
+    "react",
+    "express",
+    "mongodb"
+  ],
+  "author": "Benard Mugambi",
+  "license": "MIT",
   "devDependencies": {
-    "@types/node": "^22.14.0",
-    "@vitejs/plugin-react": "^5.0.0",
-    "typescript": "~5.8.2",
-    "vite": "^6.2.0"
+    "concurrently": "^8.2.2"
   }
 }
