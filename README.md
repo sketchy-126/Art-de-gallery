@@ -80,12 +80,12 @@ npm run dev
 
 ## Deployment
 
-See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed deployment instructions.
+See [DEPLOYMENT_INSTRUCTIONS.md](DEPLOYMENT_INSTRUCTIONS.md) for detailed deployment instructions.
 
 ### Quick Deploy
 
-**Backend:** Railway, Render, or Heroku
-**Frontend:** Vercel or Netlify
+**Backend:** Railway, Render, or Heroku (deploy `backend/` directory)
+**Frontend:** Vercel or Netlify (deploy `frontend/` directory as root)
 
 ## Tech Stack
 
