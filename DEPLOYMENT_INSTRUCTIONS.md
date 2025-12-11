@@ -1,16 +1,14 @@
 # Deployment Instructions
 
-## Frontend Deployment (Vercel)
+## Frontend Deployment (Static Hosting)
 
-### Option 1: Deploy Frontend Directory (Recommended)
+### Option 1: Netlify (Recommended)
 
-1. **In Vercel Dashboard:**
+1. **In Netlify Dashboard:**
    - Import project from GitHub
-   - **Root Directory**: Set to `frontend`
-   - **Framework Preset**: Vite
-   - **Build Command**: `npm run build` (default)
-   - **Output Directory**: `dist` (default)
-   - **Install Command**: `npm install` (default)
+   - **Base Directory**: Set to `frontend`
+   - **Build Command**: `npm run build`
+   - **Publish Directory**: `frontend/dist`
 
 2. **Environment Variables:**
    ```
@@ -18,13 +16,13 @@
    GEMINI_API_KEY=your_gemini_key_here
    ```
 
-### Option 2: Manual Deploy from Frontend Directory
+### Option 2: Manual Deploy
 
 ```bash
 cd frontend
 npm install
 npm run build
-# Upload dist/ folder to any static hosting
+# Upload dist/ folder to any static hosting (Netlify, GitHub Pages, etc.)
 ```
 
 ## Backend Deployment (Railway/Render)

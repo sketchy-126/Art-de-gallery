@@ -85,7 +85,7 @@ See [DEPLOYMENT_INSTRUCTIONS.md](DEPLOYMENT_INSTRUCTIONS.md) for detailed deploy
 ### Quick Deploy
 
 **Backend:** Railway, Render, or Heroku (deploy `backend/` directory)
-**Frontend:** Vercel or Netlify (deploy `frontend/` directory as root)
+**Frontend:** Netlify, GitHub Pages, or any static hosting (deploy `frontend/` directory)
 
 ## Tech Stack
 
