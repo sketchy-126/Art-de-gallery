@@ -212,8 +212,8 @@ See: `docs/MONGODB_SETUP.md` (to be created)
 - Heroku
 
 **Frontend Options:**
-- Vercel (recommended)
-- Netlify
+- GitHub Pages
+- Static hosting services
 
 See: `docs/DEPLOYMENT.md`
 

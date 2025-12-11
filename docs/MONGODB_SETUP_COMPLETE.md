@@ -84,7 +84,7 @@ All 11 artworks have been migrated:
 
 ### Test 3: After Deployment
 1. Deploy backend to Railway/Render
-2. Deploy frontend to Vercel/Netlify
+2. Deploy frontend to GitHub Pages
 3. Admin adds artwork from any device
 4. **All users see changes immediately!** ✅
 
@@ -281,7 +281,7 @@ curl http://localhost:5000/api/artworks
 
 ### Production:
 - [ ] Deploy backend to Railway/Render
-- [ ] Deploy frontend to Vercel/Netlify
+- [ ] Deploy frontend to GitHub Pages
 - [ ] Update MongoDB IP whitelist
 - [ ] Change database password
 - [ ] Set up monitoring

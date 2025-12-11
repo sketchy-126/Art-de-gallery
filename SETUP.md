@@ -254,9 +254,8 @@ See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed deployment instruction
 - DigitalOcean
 
 **Frontend:**
-- Vercel (recommended)
-- Netlify
-- Cloudflare Pages
+- GitHub Pages
+- Any static hosting service
 
 ---
 
