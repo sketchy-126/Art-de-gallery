@@ -1,8 +1,21 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "_comment": "Vercel deployment configuration for Exo-Arts Gallery frontend",
+  "_instructions": {
+    "deployment": "Set Vercel Root Directory to 'frontend' in project settings",
+    "framework": "Vite (auto-detected)",
+    "buildCommand": "npm run build (default)",
+    "outputDirectory": "dist (default)",
+    "environmentVariables": [
+      "VITE_API_URL=https://your-backend-url.railway.app/api",
+      "GEMINI_API_KEY=your_gemini_key_here"
+    ]
+  },
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/index.html",
+      "_purpose": "Enable client-side routing for React SPA - all routes redirect to index.html"
     }
   ]
 }
